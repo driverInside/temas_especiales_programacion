@@ -49,6 +49,14 @@ class LinkedList {
 
   }
 
+  appendToEnd (value) {
+
+  }
+
+  exists (value) {
+    return false;
+  }
+
   // TODO: update this method
   toString() {
     return this.head.getValue + ' - ' + this.tail + ' - ' + this.size;
@@ -63,4 +71,15 @@ console.log(myLinkedList.isEmpty()) // true
 
 myLinkedList.appendToStart(3);
 
-console.log(myLinkedList.toString()) // 3 - 3 - 1
+console.log(myLinkedList.isEmpty()) // false
+
+myLinkedList.appendToEnd(7);
+myLinkedList.appendToEnd(1);
+myLinkedList.appendToEnd(23);
+myLinkedList.appendToEnd(12);
+
+console.log(myLinkedList.exists(5)); // false
+console.log(myLinkedList.exists(13)); // true
+console.log(myLinkedList.exists(23)); // true
+console.log(myLinkedList.exists(2)); // false
+console.log(myLinkedList.exists(12)); // true
