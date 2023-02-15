@@ -21,11 +21,11 @@ class Node {
   }
 }
 
-const firstNode = new Node(3);
+module.exports = Node;
+
+
+/* const firstNode = new Node(3);
 console.log(firstNode.getValue());
 firstNode.setValue(7);
-console.log(firstNode.getValue());
+console.log(firstNode.getValue()); */
 
-
-// Class: definition
-// Object: class' instance
