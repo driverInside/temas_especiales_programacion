@@ -40,26 +40,62 @@ class LinkedList {
     newNode.next = this.head
     // 3. head = new node
     this.head = newNode
-    // 4. ++this.size
-    ++this.size;
     // 5 if list is empty then, this tail points to new Node
     if (this.isEmpty()) {
       this.tail = newNode;
     }
+    // 4. ++this.size
+    ++this.size;
 
   }
 
   appendToEnd (value) {
+    // 1. Create a new node
+    const newNode = new Node(value);
 
+    if (this.isEmpty()) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      // 2. tail points to new node
+      this.tail.next = newNode;
+      // tail = new node
+      this.tail = newNode;
+    }
+
+    ++this.size
   }
 
   exists (value) {
+    if (this.isEmpty()) return false;
+
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      if (currentNode.value === value) {
+        return true
+      }
+      currentNode = currentNode.next;
+    }
+
     return false;
   }
 
   // TODO: update this method
   toString() {
-    return this.head.getValue + ' - ' + this.tail + ' - ' + this.size;
+    if (this.isEmpty()) return 'this list is empty';
+
+    let str= '';
+    let currentNode = this.head;
+
+    while (currentNode !== null) {
+      // str +=  currentNode.value + '-> ';
+      str +=  `${currentNode.value} -> `;
+      currentNode = currentNode.next;
+    }
+
+    str += 'null';
+    return str;
   }
 }
 
@@ -69,17 +105,27 @@ const myLinkedList = new LinkedList();
 // console.log(linkedString)
 console.log(myLinkedList.isEmpty()) // true
 
-myLinkedList.appendToStart(3);
+console.log(myLinkedList.toString()); // 'this list is empty'
+
+myLinkedList.appendToStart(3); 
 
 console.log(myLinkedList.isEmpty()) // false
+
+console.log(myLinkedList.exists(3)); // true
+console.log(myLinkedList.exists(5)); // false
+console.log(myLinkedList.exists(7)); // false
+
+console.log(myLinkedList.toString()); // 3 -> null
 
 myLinkedList.appendToEnd(7);
 myLinkedList.appendToEnd(1);
 myLinkedList.appendToEnd(23);
 myLinkedList.appendToEnd(12);
 
-console.log(myLinkedList.exists(5)); // false
-console.log(myLinkedList.exists(13)); // true
+console.log(myLinkedList.toString()); // 3 - 7- 1- 23- 12 -> null
+
+
+console.log(myLinkedList.exists(13)); // false
 console.log(myLinkedList.exists(23)); // true
 console.log(myLinkedList.exists(2)); // false
 console.log(myLinkedList.exists(12)); // true
