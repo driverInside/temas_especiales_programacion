@@ -15,7 +15,7 @@ describe('Math class', () => {
     expect(math.add(-1, -1)).toBe(-2);
   });
 
-  it('should add the element of an array of numbers', () => {
+  it('should get the sum of the elements of an array of numbers', () => {
     const math = new Math();
     const arr = [4, 5, 2, 8, 11, 9];
 
@@ -42,6 +42,6 @@ describe('Math class', () => {
     const uniques = math.uniques(arr)
 
     expect(math.uniques).toBeDefined();
-    expect(uniques).toBe([1, 3, 2, 6, 5, 4]);
+    expect(uniques).toStrictEqual([1, 3, 2, 6, 5, 4]);
   });
 });

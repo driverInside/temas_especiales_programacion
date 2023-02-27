@@ -17,7 +17,31 @@ class Math {
    * @param {Array<number>} arr the array of numbers to add
    */
   sumArr (arr) {
-    
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+      sum += arr[i];
+    }
+    return sum;
+  }
+
+  avg (arr) {
+    const sum = this.sumArr(arr);
+
+    return sum / arr.length;
+  }
+
+  uniques (arr) {
+    // return [...new Set(arr)];
+    const newArr = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      if (!newArr.includes(element)) {
+        newArr.push(element);
+      }
+    }
+
+    return newArr;
   }
 }
 
