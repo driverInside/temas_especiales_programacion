@@ -1,0 +1,4 @@
+GET http://localhost:3000/random HTTP/1.1
+
+###
+POST http://localhost:3000/fib/4 HTTP/1.1
