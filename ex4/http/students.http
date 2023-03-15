@@ -1,1 +1,9 @@
-GET http://localhost:3000/students?limit=5 HTTP/1.1
+GET http://localhost:3000/students?limit=15&is_holder=true&age=20 HTTP/1.1
+###
+GET http://localhost:3000/students?limit=10&is_holder=true HTTP/1.1
+###
+GET http://localhost:3000/students?limit=10&age=20 HTTP/1.1
+###
+GET http://localhost:3000/students?limit=10 HTTP/1.1
+###
+GET http://localhost:3000/students HTTP/1.1
