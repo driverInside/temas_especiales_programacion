@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express();
 
-app.use(express.json());
 const routes = require('./api');
 
 app.use(routes);
+
+app.get('/episodes', (_, res) => {
+  res.send({
+    message: 'hello world'
+  });
+});
 
 module.exports = app;
