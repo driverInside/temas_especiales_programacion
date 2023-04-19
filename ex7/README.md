@@ -21,6 +21,8 @@ docker run --name pgadmin -p 5050:80 -e "PGADMIN_DEFAULT_EMAIL=name@example.com"
 Then, create a new network and link pgadmin and postgres
 
 ```
+docker network create --driver bridge pgnetwork
+
 docker network connect pgnetwork pgadmin
 docker network connect pgnetwork postgres
 ```
@@ -28,4 +30,38 @@ docker network connect pgnetwork postgres
 You can run `docker network inspect pgnetwork` to inspect your network
 
 Finally go to [http://localhost:5050/browser/](http://localhost:5050/browser/) and connect your postgres database.
+
+```
+ {
+        "Name": "pgnetwork",
+        ...
+        "Containers": {
+            "3111...": {
+                "Name": "pgadmin",
+                ...
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            },
+            "5e5...": {
+                "Name": "postgres",
+                ...
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+```
+
+For this example, postgres server is running on the `172.18.0.2` IP address.
+
+Connect your database 
+
+General tab
+Name: postgres
+Connection tab
+Hostname: 172.18.0.2 (see command above)
+Port: 5432
+Username: postgres
+Password: password
 
