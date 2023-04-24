@@ -65,3 +65,9 @@ Port: 5432
 Username: postgres
 Password: password
 
+
+Install dependencies
+
+```
+npm i express sequelize pg pg-hstore
+```
