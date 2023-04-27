@@ -68,6 +68,42 @@ Password: password
 
 Install dependencies
 
-```
+```bash
 npm i express sequelize pg pg-hstore
+```
+## Create tables
+
+Crate a new database and go to the `Tools` -> `Query Tool` menu (pgAdmin) and run the commands below:
+
+```sql
+CREATE TABLE IF NOT EXISTS "editorials" (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(250) NOT NULL,
+	"createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+  	"updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "books" (
+	id SERIAL PRIMARY KEY,
+	title varchar(250) NOT NULL,
+	"createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+  	"updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+	"editorial_id" INTEGER REFERENCES "editorials" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS "authors" (
+	"id" serial PRIMARY KEY,
+	"name" VARCHAR(250) NOT NULL,
+	"lastname" VARCHAR(250),
+	"createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+  	"updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "booksauthors" (
+	"book_id" INTEGER NOT NULL REFERENCES "books" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
+	"author_id" INTEGER NOT NULL REFERENCES "authors" ("id") ON DELETE SET NULL ON UPDATE CASCADE,
+	"createdAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+  	"updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL,
+	PRIMARY KEY ("book_id", "author_id")
+);
 ```
