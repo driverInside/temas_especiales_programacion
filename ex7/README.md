@@ -69,7 +69,8 @@ Password: password
 Install dependencies
 
 ```bash
-npm i express sequelize pg pg-hstore
+npm i express sequelize pg pg-hstore dotenv
+npm i nodemon -D
 ```
 ## Create tables
 
