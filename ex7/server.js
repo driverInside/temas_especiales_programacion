@@ -11,12 +11,6 @@ const PORT = process.env.PORT || 3000;
   try {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
-
-    const newEditorial = new Editorials({
-      name: 'Test1'
-    })
-
-    await newEditorial.save();
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }

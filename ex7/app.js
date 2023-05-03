@@ -1,10 +1,8 @@
 const express = require('express');
 const app = express();
 
-app.get('/', (_, res) => {
-  return res.send({
-    message: 'ex7'
-  });
-});
+const routes = require('./api');
+
+app.use(routes);
 
 module.exports = app;

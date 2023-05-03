@@ -11,6 +11,4 @@ const Editorials = sequelize.define('editorials', {
   timestamps: true
 });
 
-
-
 module.exports = Editorials;
